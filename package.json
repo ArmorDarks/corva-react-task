@@ -48,7 +48,7 @@
     "start:app": "webpack-dev-server --env.hot",
     "start:server": "node src/server/index.js",
     "lint": "npm run lint:scripts && npm run lint:styles",
-    "lint:scripts": "standard | snazzy --fix",
+    "lint:scripts": "standard --fix | snazzy",
     "lint:styles": "stylelint \"**/*.{css,scss,sass}\" \"!{build}/**\" --fix",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
