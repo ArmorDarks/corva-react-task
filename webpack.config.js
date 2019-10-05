@@ -1,6 +1,7 @@
 const { resolve } = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { path } = require('./config')
 
 module.exports = (env = {}) => ({
@@ -44,6 +45,21 @@ module.exports = (env = {}) => ({
     strictExportPresence: true,
     rules: [
       {
+        test: /\.s[ac]ss$/i,
+        use: [
+          env.production
+            ? {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                hmr: env.hot
+              }
+            }
+            : 'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
         test: /\.m?jsx?$/,
         exclude: /node_modules/,
         use: {
@@ -59,6 +75,10 @@ module.exports = (env = {}) => ({
       : new webpack.NamedModulesPlugin(),
     // Prevent Moment from bundling all locales
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[name].[id].css'
+    }),
     new HtmlWebpackPlugin()
   ]
 })
