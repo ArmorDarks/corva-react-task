@@ -1,5 +1,20 @@
 # Task
 
+<p>
+  <a href='https://codecov.io/gh/armordarks/corva-react-task'>
+    <img src='https://img.shields.io/codecov/c/github/armordarks/corva-react-task.svg' alt='Code coverage' />
+  </a>
+  <a href='https://circleci.com/gh/armordarks/corva-react-task'>
+    <img src='https://img.shields.io/circleci/build/gh/armordarks/corva-react-task/master.svg?label=circle' alt='CircleCI Build Status' />
+  </a>
+  <a href='https://david-dm.org/armordarks/corva-react-task'>
+    <img src='https://img.shields.io/david/armordarks/corva-react-task.svg' alt='Dependency Status' />
+  </a>
+  <a href='https://github.com/armordarks/corva-react-task/search?l=typescript'>
+    <img src='https://img.shields.io/github/languages/top/armordarks/corva-react-task.svg' alt='Written in TypeScript' />
+  </a>
+</p>
+
 ## Usage
 
 1. Install Node.js.
