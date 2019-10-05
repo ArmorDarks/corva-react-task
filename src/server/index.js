@@ -1,3 +1,3 @@
 require('dotenv-expand')(require('dotenv').config());
 
-require('./src/app.js');
+require('./server.js');
