@@ -1,0 +1,10 @@
+$body-color: rgb(214, 83, 83);
+
+// stylelint-disable-next-line selector-max-type
+body {
+  background-color: $body-color;
+}
+
+.shadow {
+  box-shadow: 0;
+}

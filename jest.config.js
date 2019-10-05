@@ -29,6 +29,12 @@ module.exports = {
   collectCoverageFrom: [
     `${path.src.root}/**/*.?(m)[jt]s?(x)`
   ],
+  snapshotSerializers: [
+    'enzyme-to-json/serializer'
+  ],
+  setupFilesAfterEnv: [
+    `<rootDir>/${path.src.root}/app/setupEnzyme.ts`
+  ],
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname'

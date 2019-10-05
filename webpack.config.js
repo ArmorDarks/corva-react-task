@@ -20,7 +20,7 @@ module.exports = (env = {}) => {
       watchContentBase: true
     },
     name: 'main',
-    entry: `./${path.src.mainScript}`,
+    entry: `./${path.src.appEntryScript}`,
     output: {
       path: resolve(__dirname, path.build.scripts),
       filename: '[name].js',
@@ -40,6 +40,9 @@ module.exports = (env = {}) => {
     },
     resolve: {
       extensions: ['.mjs', '.mjs', '.ts', '.tsx', '.js', '.jsx'],
+      alias: {
+        'react-dom': '@hot-loader/react-dom'
+      },
       // Avoid some dependencies being bundled as duplicates due to path difference
       modules: [
         resolve(__dirname, 'node_modules')
