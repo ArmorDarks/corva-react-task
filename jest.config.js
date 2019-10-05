@@ -19,6 +19,9 @@ module.exports = {
     'jsx',
     'json'
   ],
+  moduleNameMapper: {
+    '^.+\\.s[ac]ss$': 'babel-jest'
+  },
   testMatch: [
     '**/?(*.)+(spec|test).?(m)[jt]s?(x)'
   ],
