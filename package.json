@@ -68,6 +68,7 @@
     "lint:styles": "stylelint \"**/*.{css,scss,sass}\" \"!{build}/**\" --fix",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
+    "build": "run-p build:*",
     "build:app": "webpack --env.production",
     "prepublishOnly": "run-s lint test build:*",
     "preversion": "run-s lint test build:*"

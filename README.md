@@ -40,4 +40,4 @@
 
 * `npm test` — run all tests and collect full coverage report.
 * `npm run test:watch` — run all tests and watch for changes.
-* `npm run build:app` — build the app for the release.
+* `npm run build` — build the app for the release.
