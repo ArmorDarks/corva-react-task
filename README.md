@@ -1,44 +1,28 @@
-# Task Delivery
-```diff
-- Please don’t fork/branch or create pull-request from the repository. 
-- Clone it and email your solution back to us when you’re done.
-```
+# Task
 
-# Task Description
-You have a server which returns random numbers via WebSocket ([socket.io](https://socket.io)) connection.
+## Usage
 
+1. Install Node.js.
+2. Run `npm install` to install dependencies.
+4. Add `.env` file to specify server port:
 
-You should implement the next:
+   ```
+   PORT=3000
+   ```
 
-1. A line chart:
-    - **x-axis**: time of a received number (look at `timestamp` payload field)
-    - **y-axis**: number values
-2. A bar chart:
-    - **x-axis**: range categories (e.g. `-10 - 0`, `0 - 10`, `10 - 20` etc)
-    - **y-axis**: the amount of numbers in each category
-3. (Optional) An input called *"Alert threshold"*:
-    - a user should be able to enter a number
-    - if the random number received from the server is greater than the threshold - show an alert toast / snackbar with the number as the payload
-4. Design: we appreciate your own design decisions =)
+5. Run `npm start` to launch in parallel the server and the app.
+6. Check [http://localhost:8080/](http://localhost:8080/) to see the app or [http://localhost:8080/](http://localhost:3000/) to access the server.
 
-Charts should be updated in real time. **Please**, consider code style best practices. 
+## Development
 
-# Limitations
+* `npm start` — start the application and the server.
 
-1. **React**
-2. Use [socket.io-client](https://socket.io/docs/client-api) to connect to the server
-3. That’s all
+   Access application via [http://localhost:8080/](http://localhost:8080/) and the server via [http://localhost:8080/](http://localhost:3000/).
 
-**P.S.** Feel free to use any module bundler, charts package, UI-kit etc you want. **BUT** please, leave some notes about the project setup.
+* `npm run lint` — run scripts and styles linting.
 
-# Server Setup
+   Note that it will try to fix all autofixable rules.
 
-1. Install NodeJS
-2. In the project root folder run `yarn` / `npm install`
-3. Add `.env` file with the specified PORT (`3000` by default) env variable (look at `.env.sample` file)
-4. Run `yarn start` / `npm start`
-5. Now you can connect to the server via [socket.io-client](https://socket.io/docs/client-api):
-    - listen for `data` event
-    - the payload format is `{ value: <float>, timestamp: <integer> }`
-
-# Good luck!
+* `npm test` — run all tests and collect full coverage report.
+* `npm run test:watch` — run all tests and watch for changes.
+* `npm run build:app` — build the app for the release.

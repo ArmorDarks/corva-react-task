@@ -35,7 +35,17 @@
     "webpack-dev-server": "^3.8.2"
   },
   "scripts": {
-    "start": "node src/server/index.js"
+    "start": "run-p start:*",
+    "start:app": "webpack-dev-server --env.hot",
+    "start:server": "node src/server/index.js",
+    "lint": "npm run lint:scripts && npm run lint:styles",
+    "lint:scripts": "standard | snazzy --fix",
+    "lint:styles": "stylelint \"**/*.{css,scss,sass}\" \"!{build}/**\" --fix",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "build:app": "webpack --env.production",
+    "prepublishOnly": "run-s lint test build:*",
+    "preversion": "run-s lint test build:*"
   },
   "standard": {
     "parser": "babel-eslint"
