@@ -1,6 +1,7 @@
 const { path } = require('./config')
 
 module.exports = {
+  preset: 'ts-jest',
   setupFiles: [
     'dotenv/config'
   ],

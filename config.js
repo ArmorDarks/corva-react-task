@@ -6,7 +6,7 @@ module.exports = {
     },
     src: {
       root: 'src',
-      mainScript: 'src/main.js'
+      mainScript: 'src/main.ts'
     }
   }
 }
