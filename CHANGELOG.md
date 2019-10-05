@@ -3,6 +3,6 @@
 ## HEAD
 
 ### Misc
-- Reorganized structure to prepare for an addition of UI-related components
+- Reorganized structure to prepare for an addition of the app
 - Added NPM lockfile.
 - Added changelog.
