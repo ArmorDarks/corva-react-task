@@ -14,6 +14,7 @@
     "@types/node": "^12.7.5",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
+    "autoprefixer": "^9.6.4",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "core-js": "^3.2.1",
@@ -26,6 +27,8 @@
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",
+    "postcss-csso": "^3.0.0",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
     "snazzy": "^8.0.0",
     "standard": "^14.3.1",
@@ -56,6 +59,12 @@
     "prepublishOnly": "run-s lint test build:*",
     "preversion": "run-s lint test build:*"
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "Firefox ESR",
+    "Opera 12.1"
+  ],
   "standard": {
     "parser": "@typescript-eslint/parser",
     "plugins": [
