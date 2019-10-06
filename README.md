@@ -28,6 +28,44 @@
 5. Run `npm start` to launch in parallel the server and the app.
 6. Check [http://localhost:8080](http://localhost:8080) to see the app or [http://localhost:3000](http://localhost:3000) to access the server.
 
+## Stack
+
+### Server
+
+- Express
+- Sockets.io
+
+### App
+
+Language:
+
+- TypeScript
+
+Application:
+
+- React
+- Redux
+- Sass
+- Ekzo
+
+Code quality:
+
+- Jest
+- Enzyme
+- Storybook
+
+- Standard (eslint)
+- Stylelint
+- CircleCI
+
+Bundling:
+
+- Webpack
+- TypeScript compiler
+- Babel
+- Autoprefixer (PostCSS)
+- CCSO (PostCSS)
+
 ## Development
 
 * `npm start` — start the application and the server.
