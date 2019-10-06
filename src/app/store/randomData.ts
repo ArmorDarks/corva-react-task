@@ -47,25 +47,17 @@ export type Action =
 // Action creators
 // ====================================
 
-export const createUpdateData = (payload: RandomData): UpdateData => {
-  return {
-    type: UPDATE_DATA,
-    payload
-  }
-}
+export const createUpdateData = (payload: RandomData): Action =>
+  ({ type: UPDATE_DATA, payload })
 
-export const createUpdateThreshold = (payload: RandomDataValue): UpdateThreshold => {
-  return {
-    type: UPDATE_THRESHOLD,
-    payload
-  }
-}
+export const createUpdateThreshold = (payload: RandomDataValue): Action =>
+  ({ type: UPDATE_THRESHOLD, payload })
 
 // ====================================
 // Actions
 // ====================================
 
-export const updateData = () => (dispatch: Dispatch<Action>): Promise<UpdateData> => {
+export const updateData = () => (dispatch: Dispatch<Action>): Promise<Action> => {
   return Promise.resolve(dispatch(createUpdateData({
     value: 2,
     timestamp: 2
