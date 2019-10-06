@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`main should be test 1`] = `
+exports[`App should render 1`] = `
 <h1>
   Hello, world!
 </h1>
