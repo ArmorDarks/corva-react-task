@@ -2,7 +2,7 @@
 /* eslint @typescript-eslint/no-unused-vars: "error" */
 
 import { Dispatch, Reducer } from 'redux'
-import { RandomData, RandomDataValue } from '../../contracts/randomData'
+import { RandomData, RandomDataValue } from '../../contracts/RandomData'
 import { assertNever } from '../utils/assertNever'
 
 export const INITIAL_THRESHOLD: RandomDataValue = 15
