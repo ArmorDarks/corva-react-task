@@ -73,13 +73,6 @@ export const updateData = () => (dispatch: Dispatch<Action>): Promise<UpdateData
 }
 
 // ====================================
-// Selectors
-// ====================================
-
-export const selectData = (state: State) => state.data
-export const selectThreshold = (state: State) => state.threshold
-
-// ====================================
 // Reducer
 // ====================================
 
@@ -99,3 +92,10 @@ export const reducer: Reducer<State, Action> = (state = initState, action): Stat
       return state
   }
 }
+
+// ====================================
+// Selectors
+// ====================================
+
+export const selectData = (state: State) => state.data
+export const selectThreshold = (state: State) => state.threshold
