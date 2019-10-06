@@ -27,7 +27,8 @@ module.exports = {
   ],
   coverageDirectory: 'coverage',
   collectCoverageFrom: [
-    `${path.src.root}/**/*.?(m)[jt]s?(x)`
+    `${path.src.root}/**/*.?(m)[jt]s?(x)`,
+    `!${path.src.root}/**/*.stories.?(m)[jt]s?(x)`
   ],
   snapshotSerializers: [
     'enzyme-to-json/serializer'

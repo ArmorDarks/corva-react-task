@@ -34,6 +34,7 @@
 
    Access application via [http://localhost:8080](http://localhost:8080) and the server via [http://localhost:3000](http://localhost:3000).
 
+* `npm run storybook` — launch Storybook for exploring existing components.
 * `npm run lint` — run scripts and styles linting.
 
    Note that it will try to fix all autofixable rules.
