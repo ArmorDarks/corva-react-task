@@ -2,6 +2,7 @@
 /* eslint @typescript-eslint/no-unused-vars: "error" */
 
 import { Dispatch, Reducer } from 'redux'
+import { assertNever } from '../utils/assertNever'
 
 export const INITIAL_THRESHOLD = 15
 
@@ -85,6 +86,6 @@ export const reducer: Reducer<State, Action> = (state = initState, action): Stat
     case UPDATE_THRESHOLD:
       return { ...state, data: action.payload }
     default:
-      return state
+      return assertNever(action, new Error('[store/randomData] reached unhandled action'))
   }
 }
