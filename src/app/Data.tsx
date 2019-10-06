@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
 
 const mapStateToProps = (state: RootState) => ({
+  isConnected: randomData.selectIsConnected(state.randomData),
   randomData: randomData.selectData(state.randomData)
 })
 
@@ -18,11 +19,11 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, RootAction>) 
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
 
-const Data: React.FC<Props> = ({ subscribeOnRandomData, randomData }) => {
+const Data: React.FC<Props> = ({ subscribeOnRandomData, isConnected, randomData }) => {
   return (
     <div>
       <button onClick={() => subscribeOnRandomData()}>Start loading data</button>
-      Data:
+      Data: {isConnected ? 'online' : 'offline'}
       {randomData.map((data) => <div key={data.timestamp}>{data.value}</div>)}
     </div>
   )

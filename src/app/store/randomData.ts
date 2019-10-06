@@ -14,11 +14,13 @@ export const INITIAL_THRESHOLD: RandomDataValue = 15
 // ====================================
 
 export interface State {
+  readonly isConnected: boolean
   readonly data: readonly RandomData[]
   readonly threshold: RandomDataValue
 }
 
 export const initState: State = {
+  isConnected: false,
   data: [],
   threshold: INITIAL_THRESHOLD
 }
@@ -26,6 +28,13 @@ export const initState: State = {
 // ====================================
 // Action types
 // ====================================
+
+export const SET_CONNECTED = 'app/randomData/SET_CONNECTED'
+
+export interface setConnected {
+  readonly type: typeof SET_CONNECTED;
+  readonly payload: true
+}
 
 export const UPDATE_DATA = 'app/randomData/UPDATE_DATA'
 
@@ -42,12 +51,16 @@ export interface UpdateThreshold {
 }
 
 export type Action =
+  setConnected |
   UpdateData |
   UpdateThreshold
 
 // ====================================
 // Action creators
 // ====================================
+
+export const setConnected = (): Action =>
+  ({ type: SET_CONNECTED, payload: true })
 
 export const updateData = (payload: RandomData): Action =>
   ({ type: UPDATE_DATA, payload })
@@ -61,6 +74,7 @@ export const updateThreshold = (payload: RandomDataValue): Action =>
 
 export const subscribeOnData = (): ThunkAction<Promise<void>, State, {}, Action> =>
   (dispatch) => {
+    dispatch(setConnected())
     subscribeOnRandomData((data) => dispatch(updateData(data)))
     return Promise.resolve()
   }
@@ -71,6 +85,12 @@ export const subscribeOnData = (): ThunkAction<Promise<void>, State, {}, Action>
 
 export const reducer: Reducer<State, Action> = (state = initState, action): State => {
   switch (action.type) {
+    case SET_CONNECTED:
+      return {
+        ...state,
+        isConnected: action.payload
+      }
+
     case UPDATE_DATA:
       return {
         ...state,
@@ -90,5 +110,6 @@ export const reducer: Reducer<State, Action> = (state = initState, action): Stat
 // Selectors
 // ====================================
 
+export const selectIsConnected = (state: State) => state.isConnected
 export const selectData = (state: State) => state.data
 export const selectThreshold = (state: State) => state.threshold
