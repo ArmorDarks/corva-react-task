@@ -1,3 +1,7 @@
+// @todo That file isn't used by server, be careful
+
+export const RANDOM_DATA_CHANNEL = 'data'
+
 export type Timestamp = number
 export type RandomDataValue = number
 

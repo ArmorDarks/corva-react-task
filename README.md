@@ -22,6 +22,7 @@
 4. Add `.env` file to specify server port:
 
    ```
+   URL=http://localhost
    PORT=3000
    ```
 
@@ -155,6 +156,10 @@ For instance, it doesn't bootstrap common HTML tags and manifest for rich applic
    A design-free framework that effectively deals with basic resets and provides a means for rapid prototype development.
 
    Personal preference, on a premise that basic CSS is beyond scope of that task.
+
+- `socket.io-client`
+
+   Enforced by the task constrains.
 
 #### Code quality
 

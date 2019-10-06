@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`randomData service subscribeOnRandomData should error when no \`PORT\` environment variable specified 1`] = `"[services/randomData] sockets server \`PORT\` environment variable is not specified"`;
+
+exports[`randomData service subscribeOnRandomData should error when no \`URL\` environment variable specified 1`] = `"[services/randomData] sockets server \`URL\` environment variable is not specified"`;
