@@ -40,5 +40,8 @@
    Note that it will try to fix all autofixable rules.
 
 * `npm test` — run all tests and collect full coverage report.
+
+   Note that as of right now `src/server` directory is excluded from test coverage because it's out of scope of this task.
+
 * `npm run test:watch` — run all tests and watch for changes.
 * `npm run build` — build the app for the release.
