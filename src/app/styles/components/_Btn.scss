@@ -1,0 +1,112 @@
+// =============================================================================
+// ^BUTTON
+// =============================================================================
+
+.Btn {
+  $btn-theme: (
+    base: (
+      bg: ekzo-color(linear-primary),
+      hover-bg: ekzo-color(primary)
+    )
+  );
+
+  @include ekzo-theme($btn-theme) {
+    background-image: ekzo-theme('bg');
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+  }
+
+  @extend .#{$ekzo-o-ns}btn;
+
+  padding-top: ekzo-em(ekzo-space(.5));
+  padding-bottom: ekzo-em(ekzo-space(.5));
+  padding-right: 1em;
+  padding-left: 1em;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  // Remove browsers' focus styling. Focused state
+  // will be displayed based on custom styles below
+  &:focus { outline: 0; }
+
+  &:disabled {
+    opacity: .5;
+
+    background-color: #b3c0d0;
+    background-image: none;
+
+    cursor: default;
+  }
+
+  &:not(:disabled) {
+
+    &:hover,
+    &:focus {
+      @include ekzo-theme($btn-theme) {
+        background-color: ekzo-theme(hover-bg);
+        background-image: none;
+      }
+    }
+
+  }
+
+}
+
+// -----------------------------------------------------------------------------
+// Sizes
+// -----------------------------------------------------------------------------
+
+@mixin ekzo-buttons-sizes ($postfix: '') {
+
+  .Btn--#{$postfix} {
+    padding-top:     0;
+    padding-bottom:  0;
+    padding-right:  .6em;
+    padding-left:   .6em;
+  }
+
+  .Btn-#{$postfix} {
+    padding-top:    ekzo-em(ekzo-space(.5) / 3);
+    padding-bottom: ekzo-em(ekzo-space(.5) / 3);
+    padding-right:  .8em;
+    padding-left:   .8em;
+  }
+
+  .Btn\+#{$postfix} {
+    padding-top:    ekzo-em(ekzo-space(1) * .84);
+    padding-bottom: ekzo-em(ekzo-space(1) * .84);
+    padding-right:  1.5em;
+    padding-left:   1.5em;
+  }
+
+  .Btn\+\+#{$postfix} {
+    padding-top:    ekzo-em(ekzo-space(1) * 1.17);
+    padding-bottom: ekzo-em(ekzo-space(1) * 1.17);
+    padding-right:  2em;
+    padding-left:   2em;
+  }
+
+  // ----
+  // Wide version of button
+
+  .Btn--wide--#{$postfix} {
+    padding-right: 1.5em;
+    padding-left:  1.5em;
+  }
+
+  .Btn--wide#{$postfix} {
+    padding-right: 2em;
+    padding-left:  2em;
+  }
+
+  .Btn--wide\+\+#{$postfix} {
+    padding-right: 4em;
+    padding-left:  4em;
+  }
+
+}
+
+@include ekzo-for-each-breakpoint($matches: $ekzo-responsive-buttons-breakpoints, $include-self: true) {
+  @include ekzo-buttons-sizes($postfix: ekzo-temp());
+}
