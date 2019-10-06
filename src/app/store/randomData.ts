@@ -2,21 +2,22 @@
 /* eslint @typescript-eslint/no-unused-vars: "error" */
 
 import { Dispatch, Reducer } from 'redux'
+import { RandomData, RandomDataValue } from '../../contracts/randomData'
 import { assertNever } from '../utils/assertNever'
 
-export const INITIAL_THRESHOLD = 15
+export const INITIAL_THRESHOLD: RandomDataValue = 15
 
 // ====================================
 // State
 // ====================================
 
 export interface State {
-  readonly data?: number
-  readonly threshold: number
+  readonly data?: readonly RandomData[]
+  readonly threshold: RandomDataValue
 }
 
 export const initState: State = {
-  data: undefined,
+  data: [],
   threshold: INITIAL_THRESHOLD
 }
 
@@ -28,14 +29,14 @@ export const UPDATE_DATA = 'app/data/UPDATE_DATA'
 
 export interface UpdateData {
   readonly type: typeof UPDATE_DATA;
-  readonly payload: number
+  readonly payload: RandomData
 }
 
 export const UPDATE_THRESHOLD = 'app/data/UPDATE_THRESHOLD'
 
 export interface UpdateThreshold {
   readonly type: typeof UPDATE_THRESHOLD;
-  readonly payload: number
+  readonly payload: RandomDataValue
 }
 
 export type Action =
@@ -46,14 +47,14 @@ export type Action =
 // Action creators
 // ====================================
 
-export const createUpdateData = (payload: number): UpdateData => {
+export const createUpdateData = (payload: RandomData): UpdateData => {
   return {
     type: UPDATE_DATA,
     payload
   }
 }
 
-export const createUpdateThreshold = (payload: number): UpdateThreshold => {
+export const createUpdateThreshold = (payload: RandomDataValue): UpdateThreshold => {
   return {
     type: UPDATE_THRESHOLD,
     payload
@@ -65,7 +66,10 @@ export const createUpdateThreshold = (payload: number): UpdateThreshold => {
 // ====================================
 
 export const updateData = () => (dispatch: Dispatch<Action>): Promise<UpdateData> => {
-  return Promise.resolve(dispatch(createUpdateData(15)))
+  return Promise.resolve(dispatch(createUpdateData({
+    value: 2,
+    timestamp: 2
+  })))
 }
 
 // ====================================
@@ -82,9 +86,14 @@ export const selectThreshold = (state: State) => state.threshold
 export const reducer: Reducer<State, Action> = (state = initState, action): State => {
   switch (action.type) {
     case UPDATE_DATA:
-      return { ...state, data: action.payload }
+      return {
+        ...state,
+        data: [...(state.data || []), action.payload]
+      }
+
     case UPDATE_THRESHOLD:
-      return { ...state, data: action.payload }
+      return { ...state, threshold: action.payload }
+
     default:
       return assertNever(action, new Error('[store/randomData] reached unhandled action'))
   }

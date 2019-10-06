@@ -2,24 +2,24 @@
 /* eslint @typescript-eslint/no-unused-vars: "error" */
 
 import { combineReducers, createStore } from 'redux'
-import * as data from './data'
+import * as randomData from './randomData'
 
 export interface RootState {
-  readonly data: data.State
+  readonly randomData: randomData.State
 }
 
 const initRootState: RootState = {
-  data: data.initState
+  randomData: randomData.initState
 }
 
-export type RootAction = data.Action
+export type RootAction = randomData.Action
 
 const store = createStore(
   combineReducers<RootState, RootAction>({
-    data: data.reducer
+    randomData: randomData.reducer
   }),
   initRootState
 )
 
 export default store
-export { data }
+export { randomData }
