@@ -27,14 +27,14 @@ export const initState: State = {
 // Action types
 // ====================================
 
-export const UPDATE_DATA = 'app/data/UPDATE_DATA'
+export const UPDATE_DATA = 'app/randomData/UPDATE_DATA'
 
 export interface UpdateData {
   readonly type: typeof UPDATE_DATA;
   readonly payload: RandomData
 }
 
-export const UPDATE_THRESHOLD = 'app/data/UPDATE_THRESHOLD'
+export const UPDATE_THRESHOLD = 'app/randomData/UPDATE_THRESHOLD'
 
 export interface UpdateThreshold {
   readonly type: typeof UPDATE_THRESHOLD;
