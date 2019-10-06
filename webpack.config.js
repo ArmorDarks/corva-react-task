@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 const { path } = require('./config')
 
 module.exports = (env = {}) => {
@@ -95,6 +96,7 @@ module.exports = (env = {}) => {
     },
     plugins: [
       new CleanWebpackPlugin(),
+      new Dotenv(),
       env.production
         ? new webpack.HashedModuleIdsPlugin()
         : new webpack.NamedModulesPlugin(),
