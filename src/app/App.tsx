@@ -1,3 +1,6 @@
+/* eslint no-unused-vars: "off" */
+/* eslint @typescript-eslint/no-unused-vars: "error" */
+
 import { hot } from 'react-hot-loader/root'
 import React from 'react'
 

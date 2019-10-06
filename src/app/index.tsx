@@ -1,3 +1,6 @@
+/* eslint no-unused-vars: "off" */
+/* eslint @typescript-eslint/no-unused-vars: "error" */
+
 import React from 'react'
 import { render } from 'react-dom'
 

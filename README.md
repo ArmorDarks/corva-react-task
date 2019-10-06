@@ -55,6 +55,14 @@ Code quality:
 - Storybook
 
 - Standard (eslint)
+
+    Note, that due to existing bug in Standard (eslint) + TypeScript integration every file has to have following statement, otherwise eslint improperly recognizes TypeScript types inside interfaces as unused:
+
+    ```ts
+    /* eslint no-unused-vars: "off" */
+    /* eslint @typescript-eslint/no-unused-vars: "error" */
+    ```
+
 - Stylelint
 - CircleCI
 
