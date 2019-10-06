@@ -2,7 +2,7 @@
 /* eslint @typescript-eslint/no-unused-vars: "error" */
 
 import io from 'socket.io-client'
-import { RANDOM_DATA_CHANNEL, RandomData } from '../../contracts/RandomData'
+import { RANDOM_DATA_SOCKET_EVENT, RandomData } from '../../contracts/RandomData'
 
 type OnResponse = (data: RandomData) => any
 
@@ -18,7 +18,7 @@ export const SubscribeOnRandomData = (
   port: string
 ) => (onResponse: OnResponse) =>
   client(`${url}:${port}`)
-    .on(RANDOM_DATA_CHANNEL, onResponse)
+    .on(RANDOM_DATA_SOCKET_EVENT, onResponse)
 
 /**
  * Connect to RandomData provider via sockets and receive messages in callback
