@@ -4,18 +4,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { RootState, randomData } from './store'
+import { RootState, randomData, RootAction } from './store'
+import { bindActionCreators } from 'redux'
+import { ThunkDispatch } from 'redux-thunk'
 
 const mapStateToProps = (state: RootState) => ({
   randomData: randomData.selectData(state.randomData)
 })
 
-type Props = ReturnType<typeof mapStateToProps>
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, RootAction>) => {
+  return bindActionCreators({ subscribeOnRandomData: randomData.subscribeOnData }, dispatch)
+}
 
-const Data: React.FC<Props> = ({ randomData }) => {
+type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
+
+const Data: React.FC<Props> = ({ subscribeOnRandomData, randomData }) => {
   return (
-    <div>Data: {randomData}</div>
+    <div>
+      <button onClick={() => subscribeOnRandomData()}>Start loading data</button>
+      Data:
+      {randomData.map((data) => <div key={data.timestamp}>{data.value}</div>)}
+    </div>
   )
 }
 
-export default connect(mapStateToProps)(Data)
+export default connect(mapStateToProps, mapDispatchToProps)(Data)

@@ -1,9 +1,11 @@
 /* eslint no-unused-vars: "off" */
 /* eslint @typescript-eslint/no-unused-vars: "error" */
 
-import { Dispatch, Reducer } from 'redux'
+import { Reducer } from 'redux'
+import { ThunkAction } from 'redux-thunk'
 import { RandomData, RandomDataValue } from '../../contracts/RandomData'
 import { assertNever } from '../utils/assertNever'
+import subscribeOnRandomData from '../services/randomData'
 
 export const INITIAL_THRESHOLD: RandomDataValue = 15
 
@@ -12,7 +14,7 @@ export const INITIAL_THRESHOLD: RandomDataValue = 15
 // ====================================
 
 export interface State {
-  readonly data?: readonly RandomData[]
+  readonly data: readonly RandomData[]
   readonly threshold: RandomDataValue
 }
 
@@ -47,22 +49,21 @@ export type Action =
 // Action creators
 // ====================================
 
-export const createUpdateData = (payload: RandomData): Action =>
+export const updateData = (payload: RandomData): Action =>
   ({ type: UPDATE_DATA, payload })
 
-export const createUpdateThreshold = (payload: RandomDataValue): Action =>
+export const updateThreshold = (payload: RandomDataValue): Action =>
   ({ type: UPDATE_THRESHOLD, payload })
 
 // ====================================
 // Actions
 // ====================================
 
-export const updateData = () => (dispatch: Dispatch<Action>): Promise<Action> => {
-  return Promise.resolve(dispatch(createUpdateData({
-    value: 2,
-    timestamp: 2
-  })))
-}
+export const subscribeOnData = (): ThunkAction<Promise<void>, State, {}, Action> =>
+  (dispatch) => {
+    subscribeOnRandomData((data) => dispatch(updateData(data)))
+    return Promise.resolve()
+  }
 
 // ====================================
 // Reducer

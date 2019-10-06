@@ -2,7 +2,7 @@
 /* eslint no-unused-vars: "off" */
 /* eslint @typescript-eslint/no-unused-vars: "error" */
 
-import { reducer, initState, createUpdateData, createUpdateThreshold } from './randomData'
+import { reducer, initState, updateData, updateThreshold } from './randomData'
 
 describe('randomData reducer', () => {
   describe('with no action', () => {
@@ -15,7 +15,7 @@ describe('randomData reducer', () => {
   describe('with UpdateData action', () => {
     it('should change data', () => {
       const newData = { value: 5, timestamp: 232323 }
-      const action = createUpdateData(newData)
+      const action = updateData(newData)
 
       const newState = reducer(undefined, action)
 
@@ -29,7 +29,7 @@ describe('randomData reducer', () => {
   describe('with UpdateThreshold action', () => {
     it('should change threshold', () => {
       const newThreshold = 5
-      const action = createUpdateThreshold(newThreshold)
+      const action = updateThreshold(newThreshold)
 
       const newState = reducer(undefined, action)
 
