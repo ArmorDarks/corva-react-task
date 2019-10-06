@@ -95,6 +95,7 @@ export const reducer: Reducer<State, Action> = (state = initState, action): Stat
       return { ...state, threshold: action.payload }
 
     default:
-      return assertNever(action, new Error('[store/randomData] reached unhandled action'))
+      assertNever(action)
+      return state
   }
 }
