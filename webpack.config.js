@@ -11,7 +11,7 @@ module.exports = (env = {}) => {
   return {
     target: 'web',
     mode: env.production ? 'production' : 'development',
-    devtool: env.production ? 'source-map' : 'eval-source-map',
+    devtool: env.production ? 'source-map' : 'inline-source-map',
     devServer: {
       hot: env.hot,
       contentBase: `./${path.build.root}`,
@@ -75,10 +75,11 @@ module.exports = (env = {}) => {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           use: [
-            {
-              loader: 'babel-loader',
-              options: babelOptions
-            },
+            // @todo We might need it in future, but not right now
+            // {
+            //   loader: 'babel-loader',
+            //   options: babelOptions
+            // },
             'ts-loader'
           ]
         }, {
