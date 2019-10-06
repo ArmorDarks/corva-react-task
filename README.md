@@ -41,6 +41,8 @@
 
 * `npm test` — run all tests and collect full coverage report.
 
+   Explore test coverage results at [codecov](https://codecov.io/gh/ArmorDarks/corva-react-task).
+
    Note that as of right now `src/server` directory is excluded from test coverage because it's out of scope of this task.
 
 * `npm run test:watch` — run all tests and watch for changes.
