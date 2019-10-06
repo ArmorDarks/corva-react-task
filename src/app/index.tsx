@@ -9,6 +9,8 @@ import store from './store'
 import { Provider } from 'react-redux'
 import App from './App'
 
+document.documentElement.classList.add('t-base')
+
 const $root = document.createElement('div')
 document.body.appendChild($root)
 
