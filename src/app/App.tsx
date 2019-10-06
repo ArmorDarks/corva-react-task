@@ -1,10 +1,14 @@
 import { hot } from 'react-hot-loader/root'
 import React from 'react'
 
+import Data from './Data'
 import './styles/index.scss'
 
 const App = () => (
-  <h1>Hello, world!</h1>
+  <div>
+    <h1>Hello, world!</h1>
+    <Data />
+  </div>
 )
 
 export default hot(App)

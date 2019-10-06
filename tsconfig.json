@@ -47,6 +47,7 @@
     ],
     "types": [                                /* Type declaration files to be included in compilation. */
       "node",
+      "react-redux",
       "jest",
       "enzyme",
       "enzyme-adapter-react-16"
