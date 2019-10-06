@@ -4,17 +4,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { RootState, data } from './store'
+import { RootState, randomData } from './store'
 
 const mapStateToProps = (state: RootState) => ({
-  data: data.selectData(state.data)
+  randomData: randomData.selectData(state.randomData)
 })
 
 type Props = ReturnType<typeof mapStateToProps>
 
-const Data: React.FC<Props> = ({ data }) => {
+const Data: React.FC<Props> = ({ randomData }) => {
   return (
-    <div>Data: {data}</div>
+    <div>Data: {randomData}</div>
   )
 }
 
