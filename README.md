@@ -131,6 +131,12 @@ For instance, it doesn't bootstrap common HTML tags and manifest for rich applic
 
    In the future, when more complex selectors will appear, `reselect` should be used to treat the lack of any caching within `redux`. Due to the simple nature of the current selectors, it's not used yet.
 
+- `redux-thunk`
+
+   That task doesn't require support of the complex async action, so a primitive, but effective `redux-thunk` is well-enough.
+
+   In fact, even within complex scenarios, it holds quite well in hands of experienced with Promises developers, or backed up by the `async`/`await`.
+
 - `Sass`
 
    The most popular preprocessor for CSS.

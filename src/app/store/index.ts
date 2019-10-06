@@ -2,6 +2,7 @@
 /* eslint @typescript-eslint/no-unused-vars: "error" */
 
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
+import thunk from 'redux-thunk'
 import immutableStateInvariant from 'redux-immutable-state-invariant'
 
 import * as randomData from './randomData'
@@ -21,8 +22,8 @@ const rootReducer = combineReducers<RootState, RootAction>({
 export type RootAction = randomData.Action
 
 const middleware = process.env.production
-  ? []
-  : [immutableStateInvariant()]
+  ? [thunk]
+  : [thunk, immutableStateInvariant()]
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
