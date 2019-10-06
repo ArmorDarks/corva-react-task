@@ -16,6 +16,7 @@ module.exports = (env = {}) => {
       hot: env.hot,
       contentBase: `./${path.build.root}`,
       overlay: true,
+      open: true,
       historyApiFallback: true,
       watchContentBase: true
     },
