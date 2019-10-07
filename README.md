@@ -167,6 +167,10 @@ For instance, it doesn't bootstrap common HTML tags and manifest for rich applic
 
    Enforced by the task constrains.
 
+- `highcharts`
+
+   Company already uses it, so it seems to be logical choice. There are few other popular alternatives, which might be considered too.
+
 #### Code quality
 
 - `Jest`
