@@ -48,11 +48,22 @@ describe('randomData', () => {
       })
     })
 
+    describe('with setConnected action', () => {
+      it('should change data', () => {
+        const action = setConnected()
+        const newState = reducer(undefined, action)
+
+        expect(newState).toEqual({
+          ...initState,
+          isConnected: true
+        })
+      })
+    })
+
     describe('with UpdateData action', () => {
       it('should change data', () => {
         const newData = { value: 5, timestamp: 232323 }
         const action = updateData(newData)
-
         const newState = reducer(undefined, action)
 
         expect(newState).toEqual({
@@ -66,7 +77,6 @@ describe('randomData', () => {
       it('should change threshold', () => {
         const newThreshold = 5
         const action = updateThreshold(newThreshold)
-
         const newState = reducer(undefined, action)
 
         expect(newState).toEqual({
