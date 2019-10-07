@@ -78,7 +78,7 @@
     "start:server": "node src/server/index.js",
     "lint": "npm run lint:scripts && npm run lint:styles",
     "lint:scripts": "standard \"**/*.{mjs,ts,tsx,js,jsx}\" --fix | snazzy",
-    "lint:styles": "stylelint \"**/*.{css,scss,sass}\" \"!{build}/**\" --fix",
+    "lint:styles": "stylelint \"**/*.{css,scss,sass}\" \"!{build,coverage}/**\" --fix",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "build": "run-p build:*",
