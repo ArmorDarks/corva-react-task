@@ -2,59 +2,70 @@
 /* eslint @typescript-eslint/no-unused-vars: "error" */
 
 import React from 'react'
-import { connect } from 'react-redux'
-
-import { RootState, randomData, RootAction } from './store'
-import { bindActionCreators } from 'redux'
-import { ThunkDispatch } from 'redux-thunk'
 
 import { BarChart, SplineChart } from './components'
-
-const mapStateToProps = (state: RootState) => ({
-  isConnected: randomData.selectIsConnected(state.randomData),
-  randomData: randomData.selectData(state.randomData),
-  threshold: randomData.selectThreshold(state.randomData)
-})
-
-const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, RootAction>) => {
-  return bindActionCreators({
-    subscribeOnRandomData: randomData.subscribeOnData,
-    updateThreshold: randomData.updateThreshold
-  }, dispatch)
-}
-
-type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
+import { RandomData } from '../contracts/RandomData'
+import { Threshold, updateThreshold } from './store/randomData'
 
 const CHART_MAX_SERIES = 10
 
-const Data: React.FC<Props> = ({ subscribeOnRandomData, updateThreshold, isConnected, randomData, threshold }) => {
+interface Props {
+  isConnected: boolean,
+  randomData: readonly RandomData[],
+  threshold: Threshold,
+  updateThreshold: typeof updateThreshold,
+}
+
+const Data: React.FC<Props> = ({ isConnected, randomData, threshold, updateThreshold }) => {
   return (
-    <div>
+    <div className='h-margin-top+'>
 
-      <BarChart
-        seriesName='Random data occurrences'
-        seriesData={randomData.map(({ value }) => value)}
-      />
+      <div className='Wrapper h-flex h-flex--wrap h-flex-x--between h-flex-y--center h-margin-ends+'>
 
-      <SplineChart
-        seriesName='Random data'
-        seriesData={randomData.map((data) => [data.timestamp, data.value] as const)}
-        threshold={threshold === null ? undefined : threshold}
-        limit={CHART_MAX_SERIES}
-      />
-      <button onClick={() => subscribeOnRandomData()}>Start loading data</button>
+        <div className='h-flex h-flex--wrap h-flex-y--center'>
+          <h1 className='h-inline h-margin-ends'>Random Data Stats</h1>
 
-      <input
-        type='number'
-        onChange={(e) => updateThreshold(e.target.value === '' ? null : +e.target.value)}
-        value={threshold === null ? '' : threshold}
-      />
+          <div className='h-margin-left h-margin-ends'>
+            {isConnected ? 'online' : 'offline'}
+          </div>
 
-      Data: {isConnected ? 'online' : 'offline'}
+        </div>
 
-      {randomData.map((data) => <div key={data.timestamp}>{data.timestamp} | {data.value}</div>)}
+        <div className='h-margin-ends'>
+          <label className='h-text- h-margin-right-' htmlFor='threshold'>Threshold</label>
+          <input
+            type='number'
+            id='threshold'
+            name='threshold'
+            onChange={(e) => updateThreshold(e.target.value === '' ? null : +e.target.value)}
+            value={threshold === null ? '' : threshold}
+          />
+        </div>
+
+      </div>
+
+      <div className='o-grid'>
+
+        <div className='o-grid__iterm h-1/2'>
+          <BarChart
+            seriesName='Random data occurrences'
+            seriesData={randomData.map(({ value }) => value)}
+          />
+        </div>
+
+        <div className='o-grid__iterm h-1/2'>
+          <SplineChart
+            seriesName='Random data'
+            seriesData={randomData.map((data) => [data.timestamp, data.value] as const)}
+            threshold={threshold === null ? undefined : threshold}
+            limit={CHART_MAX_SERIES}
+          />
+        </div>
+
+      </div>
+
     </div>
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Data)
+export default Data
