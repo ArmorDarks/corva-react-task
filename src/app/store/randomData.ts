@@ -21,6 +21,8 @@ export type Threshold = RandomDataValue | null
 
 export interface State {
   readonly isConnected: boolean
+  // @todo Note that with time it might grow too big. Most likely, we will need to define some limit
+  //       after which will start to cut too old data.
   readonly data: readonly RandomData[]
   readonly threshold: Threshold
 }

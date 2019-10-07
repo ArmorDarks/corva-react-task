@@ -31,6 +31,9 @@ type Props =
 
 export class App extends React.Component<Props> {
   componentDidMount () {
+    // @todo Note that in some cases server might send events with extreme rate
+    //       That seems to be out of scope of this task, but in future we might need
+    //       to debouce rendering rate
     this.props.subscribeOnRandomData()
   }
 
