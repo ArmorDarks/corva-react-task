@@ -4,6 +4,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@types/lodash.range": "^3.2.6",
     "@types/react-dom": "^16.9.1",
     "@types/react-redux": "^7.1.4",
     "@types/redux-immutable-state-invariant": "^2.1.1",
@@ -12,6 +13,7 @@
     "express": "^4.16.4",
     "highcharts": "^7.2.0",
     "highcharts-react-official": "^2.2.2",
+    "lodash.range": "^3.2.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",
