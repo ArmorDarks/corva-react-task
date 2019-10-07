@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`randomData action setConnected should create action 1`] = `
+Object {
+  "payload": true,
+  "type": "app/randomData/SET_CONNECTED",
+}
+`;
+
+exports[`randomData action updateData should create action 1`] = `
+Object {
+  "payload": Object {
+    "timestamp": 1,
+    "value": 2,
+  },
+  "type": "app/randomData/UPDATE_DATA",
+}
+`;
+
+exports[`randomData action updateThreshold should create action 1`] = `
+Object {
+  "payload": 2,
+  "type": "app/randomData/UPDATE_THRESHOLD",
+}
+`;
