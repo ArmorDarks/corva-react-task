@@ -7,9 +7,8 @@ import { connect } from 'react-redux'
 import { RootState, randomData, RootAction } from './store'
 import { bindActionCreators } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
-import * as Highcharts from 'highcharts'
 
-import HighchartsReact from 'highcharts-react-official'
+import { BarChart, SplineChart } from './components'
 
 const mapStateToProps = (state: RootState) => ({
   isConnected: randomData.selectIsConnected(state.randomData),
@@ -26,46 +25,23 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, {}, RootAction>) 
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
 
+const CHART_MAX_SERIES = 10
+
 const Data: React.FC<Props> = ({ subscribeOnRandomData, updateThreshold, isConnected, randomData, threshold }) => {
   return (
     <div>
-      <HighchartsReact
-        highcharts={Highcharts}
-        options={{
-          chart: {
-            type: 'spline'
-          },
-          title: {
-            text: 'Random Data'
-          },
-          time: {
-            useUTC: false
-          },
-          legend: {
-            enabled: false
-          },
-          exporting: {
-            enabled: false
-          },
-          xAxis: {
-            type: 'datetime',
-            tickPixelInterval: 150
-          },
-          yAxis: {
-            tickInterval: 5,
-            plotLines: [{
-              value: threshold,
-              width: 2,
-              color: 'red'
-            }]
-          },
-          series: [{
-            name: 'Random Data',
-            data: randomData.map((data) => [data.timestamp, data.value]).slice(-20)
-          }]
-        } as any}
+
+      <BarChart
+        seriesName='Random data occurrences'
+        seriesData={randomData.map(({ value }) => value)}
       />
 
+      <SplineChart
+        seriesName='Random data'
+        seriesData={randomData.map((data) => [data.timestamp, data.value] as const)}
+        threshold={threshold === null ? undefined : threshold}
+        limit={CHART_MAX_SERIES}
+      />
       <button onClick={() => subscribeOnRandomData()}>Start loading data</button>
 
       <input
