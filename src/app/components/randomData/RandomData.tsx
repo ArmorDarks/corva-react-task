@@ -16,6 +16,9 @@ export interface Props {
   updateThreshold: typeof updateThreshold,
 }
 
+/**
+ * Display Random Data charts and some additional controls
+ */
 const RandomData: React.FC<Props> = ({ isConnected, randomData, threshold, updateThreshold }) => {
   return (
     <div className='h-margin-top+'>
