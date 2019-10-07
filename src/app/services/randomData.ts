@@ -7,31 +7,35 @@ import { RANDOM_DATA_SOCKET_EVENT, RandomData } from '../../contracts/RandomData
 type OnResponse = (data: RandomData) => any
 
 /**
- * Factory for RandomData socket connector. Mostly need for the ability to inject mock client in tests.
- * @param client Instance of the 'socket.io-client'
- * @param url Url of the server
- * @param port Port of the server
- */
-export const SubscribeOnRandomData = (
-  client: typeof io,
-  url: string,
-  port: string
-) => (onResponse: OnResponse) =>
-  client(`${url}:${port}`)
-    .on(RANDOM_DATA_SOCKET_EVENT, onResponse)
+ * Creates connection via sockets, resolves to a ready socket, or rejects with error
+ * @param url Server URL.
+ * @param port Server port.
+*/
+export const connect = (url: string, port: string): Promise<SocketIOClient.Emitter> =>
+  new Promise((resolve, reject) => {
+    const socket = io(`${url}:${port}`)
+      .on('connect', () => resolve(socket))
+      .on('connect_error', (error: unknown) => reject(error))
+      .on('connect_timeout', (error: unknown) => reject(error))
+      .on('error', (error: unknown) => reject(error))
+  })
 
 /**
- * Connect to RandomData provider via sockets and receive messages in callback
+ * Creates connection to RandomData provider via sockets and starts to send
+ * events data after connection Promise resolvement.
  * @param onResponse Callback to be invoked when new data received
+ * @param url Server URL. Otherwise `URL` env variable will be used
+ * @param port Server port. Otherwise `PORT` env variable will be used
 */
-export default (onResponse: OnResponse) => {
-  if (!process.env.URL) {
+export default async (onResponse: OnResponse, url: string | undefined = process.env.URL, port: string | undefined = process.env.PORT) => {
+  if (!url) {
     throw new Error('[services/randomData] sockets server `URL` environment variable is not specified')
   }
 
-  if (!process.env.PORT) {
+  if (!port) {
     throw new Error('[services/randomData] sockets server `PORT` environment variable is not specified')
   }
 
-  SubscribeOnRandomData(io, process.env.URL, process.env.PORT)(onResponse)
+  const socket = await connect(url, port)
+  socket.on(RANDOM_DATA_SOCKET_EVENT, onResponse)
 }

@@ -2,58 +2,40 @@
 /* eslint no-unused-vars: "off" */
 /* eslint @typescript-eslint/no-unused-vars: ["error", { "argsIgnorePattern": "^_" }] */
 
-import subscribeOnRandomData, { SubscribeOnRandomData } from './randomData'
-
-/**
- * A mock implementation of the sockets client to test some internals
- */
-const mockIO = (url: string) => {
-  const eventsStore: { [key: string]: any[] | undefined } = {}
-  const socket = {
-    url,
-    eventsStore,
-    on: (channel: string, payload: any) => {
-      const events = eventsStore[channel]
-      eventsStore[channel] = [...(events || []), payload]
-      return socket
-    }
-  }
-
-  return socket
-}
+import subscribeOnRandomData, { connect } from './randomData'
 
 describe('randomData service', () => {
-  describe('SubscribeOnRandomData', () => {
-    it('should provide proper url', () => {
-      const url = 'example.com'
-      const port = '3000'
-      const socket: any = SubscribeOnRandomData(mockIO as any, url, port)((_noop) => _noop)
-      expect(socket.url).toEqual(`${url}:${port}`)
+  describe('connect', () => {
+    it.todo('should resolve on connection')
+
+    it('should reject on error', () => {
+      return expect(connect('nope', '400')).rejects.toMatchSnapshot()
     })
 
-    it('should trigger callback on new event', () => {
-      const channel = 'someChannel'
-      const event = 'Some event'
-      const socket = mockIO('example.com')
-      socket.on(channel, event)
-      expect(socket.eventsStore).toEqual({
-        [channel]: [event]
-      })
-    })
+    it.todo('should invoke callback when receiving data events')
   })
 
   describe('subscribeOnRandomData', () => {
     const originalEnv = process.env
 
-    it('should error when no `URL` environment variable specified', () => {
+    it.todo('should resolve on connection')
+
+    it('should reject on error', () => {
+      return expect(subscribeOnRandomData(() => {}, 'nope', '400')).rejects.toMatchSnapshot()
+    })
+
+    it.todo('should invoke callback when receiving data events')
+    it.todo('should create connection when `url` and `port` specified')
+
+    it('should error when no `URL` environment variable specified', async () => {
       delete process.env.URL
-      expect(() => subscribeOnRandomData((_noop) => _noop)).toThrowErrorMatchingSnapshot()
+      await expect(subscribeOnRandomData(() => {})).rejects.toThrowErrorMatchingSnapshot()
       process.env.URL = originalEnv.URL
     })
 
-    it('should error when no `PORT` environment variable specified', () => {
+    it('should error when no `PORT` environment variable specified', async () => {
       delete process.env.PORT
-      expect(() => subscribeOnRandomData((_noop) => _noop)).toThrowErrorMatchingSnapshot()
+      await expect(subscribeOnRandomData(() => {})).rejects.toThrowErrorMatchingSnapshot()
       process.env.PORT = originalEnv.PORT
     })
   })

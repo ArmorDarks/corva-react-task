@@ -73,10 +73,9 @@ export const updateThreshold = (payload: RandomDataValue): Action =>
 // ====================================
 
 export const subscribeOnData = (): ThunkAction<Promise<void>, State, {}, Action> =>
-  (dispatch) => {
+  async (dispatch) => {
+    await subscribeOnRandomData((data) => dispatch(updateData(data)))
     dispatch(setConnected())
-    subscribeOnRandomData((data) => dispatch(updateData(data)))
-    return Promise.resolve()
   }
 
 // ====================================
