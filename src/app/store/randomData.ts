@@ -13,10 +13,12 @@ export const INITIAL_THRESHOLD: RandomDataValue = 15
 // State
 // ====================================
 
+export type Threshold = RandomDataValue | null
+
 export interface State {
   readonly isConnected: boolean
   readonly data: readonly RandomData[]
-  readonly threshold: RandomDataValue
+  readonly threshold: Threshold
 }
 
 export const initState: State = {
@@ -47,7 +49,7 @@ export const UPDATE_THRESHOLD = 'app/randomData/UPDATE_THRESHOLD'
 
 export interface UpdateThreshold {
   readonly type: typeof UPDATE_THRESHOLD;
-  readonly payload: RandomDataValue
+  readonly payload: Threshold
 }
 
 export type Action =
@@ -65,7 +67,7 @@ export const setConnected = (): Action =>
 export const updateData = (payload: RandomData): Action =>
   ({ type: UPDATE_DATA, payload })
 
-export const updateThreshold = (payload: RandomDataValue): Action =>
+export const updateThreshold = (payload: Threshold): Action =>
   ({ type: UPDATE_THRESHOLD, payload })
 
 // ====================================
