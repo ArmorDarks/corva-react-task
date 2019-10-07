@@ -9,23 +9,25 @@ import BarChart, { makeSteps, makeRangesLabels, countDataOccurrencesByStep, dist
 
 describe('BarChart', () => {
   it('should render', () => {
-    const Chart = () =>
+    const chart = shallow(
       <BarChart
         seriesName='Random data'
         seriesData={[]}
       />
+    )
 
-    expect(shallow(Chart())).toMatchSnapshot()
+    expect(chart).toMatchSnapshot()
   })
 
   it('should render with data', () => {
-    const Chart = () =>
+    const chart = shallow(
       <BarChart
         seriesName='Random data'
         seriesData={[1, 2]}
       />
+    )
 
-    expect(shallow(Chart())).toMatchSnapshot()
+    expect(chart).toMatchSnapshot()
   })
 
   describe('makeSteps', () => {
