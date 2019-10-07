@@ -29,7 +29,7 @@ type Props =
   ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatchToProps>
 
-class App extends React.Component<Props> {
+export class App extends React.Component<Props> {
   componentDidMount () {
     this.props.subscribeOnRandomData()
   }
