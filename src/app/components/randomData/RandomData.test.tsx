@@ -52,11 +52,10 @@ describe('RandomData', () => {
     )
 
     const $input = component.find('input')
-    console.log($input.text())
 
     const value = 23
     $input.simulate('change', { target: { value } })
 
-    expect(mockUpdateThreshold.mock.calls).toEqual([[23]])
+    expect(mockUpdateThreshold.mock.calls).toEqual([[value]])
   })
 })
