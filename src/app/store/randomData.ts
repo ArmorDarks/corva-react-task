@@ -7,6 +7,10 @@ import { RandomData, RandomDataValue } from '../../contracts/RandomData'
 import { assertNever } from '../utils/assertNever'
 import subscribeOnRandomData from '../services/randomData'
 
+/**
+ * Retrieve random data and control its threshold
+ */
+
 export const INITIAL_THRESHOLD: RandomDataValue = 15
 
 // ====================================
