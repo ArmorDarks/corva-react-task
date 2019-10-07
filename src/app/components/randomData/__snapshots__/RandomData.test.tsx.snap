@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RandomData should render 1`] = `
+<div
+  className="h-margin-top+"
+>
+  <div
+    className="Wrapper h-flex h-flex--wrap h-flex-x--between h-flex-y--center h-margin-ends+"
+  >
+    <div
+      className="h-flex h-flex--wrap h-flex-y--center"
+    >
+      <h1
+        className="h-inline h-margin-ends"
+      >
+        Random Data Stats
+      </h1>
+      <div
+        className="h-margin-left h-margin-ends"
+      >
+        online
+      </div>
+    </div>
+    <div
+      className="h-margin-ends"
+    >
+      <label
+        className="h-text- h-margin-right-"
+        htmlFor="threshold"
+      >
+        Threshold
+      </label>
+      <input
+        id="threshold"
+        name="threshold"
+        onChange={[Function]}
+        type="number"
+      />
+    </div>
+  </div>
+  <div
+    className="o-grid"
+  >
+    <div
+      className="o-grid__iterm h-1/2"
+    >
+      <BarChart
+        seriesData={Array []}
+        seriesName="Random data occurrences"
+        step={10}
+      />
+    </div>
+    <div
+      className="o-grid__iterm h-1/2"
+    >
+      <SplineChart
+        limit={10}
+        seriesData={Array []}
+        seriesName="Random data"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RandomData should render with data 1`] = `
+<div
+  className="h-margin-top+"
+>
+  <div
+    className="Wrapper h-flex h-flex--wrap h-flex-x--between h-flex-y--center h-margin-ends+"
+  >
+    <div
+      className="h-flex h-flex--wrap h-flex-y--center"
+    >
+      <h1
+        className="h-inline h-margin-ends"
+      >
+        Random Data Stats
+      </h1>
+      <div
+        className="h-margin-left h-margin-ends"
+      >
+        online
+      </div>
+    </div>
+    <div
+      className="h-margin-ends"
+    >
+      <label
+        className="h-text- h-margin-right-"
+        htmlFor="threshold"
+      >
+        Threshold
+      </label>
+      <input
+        id="threshold"
+        name="threshold"
+        onChange={[Function]}
+        type="number"
+      />
+    </div>
+  </div>
+  <div
+    className="o-grid"
+  >
+    <div
+      className="o-grid__iterm h-1/2"
+    >
+      <BarChart
+        seriesData={
+          Array [
+            -59.168341304150964,
+            -81.39908194859946,
+          ]
+        }
+        seriesName="Random data occurrences"
+        step={10}
+      />
+    </div>
+    <div
+      className="o-grid__iterm h-1/2"
+    >
+      <SplineChart
+        limit={10}
+        seriesData={
+          Array [
+            Array [
+              1570474691564,
+              -59.168341304150964,
+            ],
+            Array [
+              1570474694403,
+              -81.39908194859946,
+            ],
+          ]
+        }
+        seriesName="Random data"
+      />
+    </div>
+  </div>
+</div>
+`;

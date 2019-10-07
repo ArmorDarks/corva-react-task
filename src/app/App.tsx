@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
 import { connect } from 'react-redux'
 
-import Data from './Data'
+import { RandomData } from './components'
 import './styles/index.scss'
 
 const mapStateToProps = (state: RootState) => ({
@@ -38,7 +38,7 @@ class App extends React.Component<Props> {
     const { isConnected, randomData, threshold, updateThreshold } = this.props
 
     return (
-      <Data
+      <RandomData
         isConnected={isConnected}
         randomData={randomData}
         threshold={threshold}

@@ -3,20 +3,20 @@
 
 import React from 'react'
 
-import { BarChart, SplineChart } from './components'
-import { RandomData } from '../contracts/RandomData'
-import { Threshold, updateThreshold } from './store/randomData'
+import { BarChart, SplineChart } from '..'
+import { RandomData as RandomDataContract } from '../../../contracts/RandomData'
+import { Threshold, updateThreshold } from '../../store/randomData'
 
 const CHART_MAX_SERIES = 10
 
-interface Props {
-  isConnected: boolean,
-  randomData: readonly RandomData[],
-  threshold: Threshold,
+export interface Props {
+  isConnected?: boolean,
+  randomData: readonly RandomDataContract[],
+  threshold?: Threshold,
   updateThreshold: typeof updateThreshold,
 }
 
-const Data: React.FC<Props> = ({ isConnected, randomData, threshold, updateThreshold }) => {
+const RandomData: React.FC<Props> = ({ isConnected, randomData, threshold, updateThreshold }) => {
   return (
     <div className='h-margin-top+'>
 
@@ -68,4 +68,4 @@ const Data: React.FC<Props> = ({ isConnected, randomData, threshold, updateThres
   )
 }
 
-export default Data
+export default RandomData
