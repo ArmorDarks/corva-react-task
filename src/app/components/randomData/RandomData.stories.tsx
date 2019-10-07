@@ -1,6 +1,7 @@
 import React from 'react'
 
 import RandomData from './RandomData'
+import '../../styles/index.scss'
 
 export default {
   component: RandomData,
