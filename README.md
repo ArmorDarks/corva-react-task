@@ -15,7 +15,7 @@
   </a>
 </p>
 
-_**Author's note:** there is no limit to perfection, and since the time is a constraint, that task implementation does not cover all cases, and could use some additional improvement. Due to the time limitations, I did not implement alerts on the threshold, and there are some other things I had to skip. Hopefully, what's been implemented would be enough to evaluate my experience._
+_**Author's note:** there is no limit to perfection, and since the time is a constraint, that task implementation does not cover all cases and could use some additional improvement. I've been forced to drop alerts on the threshold and skip some other details. Hopefully, what's been done would be enough to evaluate my experience._
 
 _Thank you for your time!_
 
