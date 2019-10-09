@@ -15,7 +15,7 @@
   </a>
 </p>
 
-_**Author's note:** there's no end for perfection, and since the time is a constraint, that task implementation does not cover all cases, and in many places should be improved. Due to the time limitations, I did not implement alerts on the threshold, and there are some other things I had to skip. Hopefully, what's been implemented would be enough to evaluate my experience._
+_**Author's note:** there is no limit to perfection, and since the time is a constraint, that task implementation does not cover all cases, and could use some additional improvement. Due to the time limitations, I did not implement alerts on the threshold, and there are some other things I had to skip. Hopefully, what's been implemented would be enough to evaluate my experience._
 
 _Thank you for your time!_
 
@@ -23,15 +23,15 @@ _Thank you for your time!_
 
 1. Install Node.js.
 2. Run `npm install` to install dependencies.
-4. Add `.env` file to specify server port:
+3. Add `.env` file to specify server port:
 
    ```
    URL=http://localhost
    PORT=3000
    ```
 
-5. Run `npm start` to launch in parallel the server and the app, `npm run storybook` to browser components, `npm test` to run tests.
-6. Check [http://localhost:8080](http://localhost:8080) to see the app or [http://localhost:3000](http://localhost:3000) to access the server.
+4. Run `npm start` to launch in parallel the server and the app, `npm run storybook` to browser components, `npm test` to run tests.
+5. Check [http://localhost:8080](http://localhost:8080) to see the app or [http://localhost:3000](http://localhost:3000) to access the server.
 
 ## Architecture
 
