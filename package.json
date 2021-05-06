@@ -11,7 +11,7 @@
     "@types/socket.io-client": "^1.4.32",
     "ekzo": "^2.7.1",
     "express": "^4.16.4",
-    "highcharts": "^7.2.0",
+    "highcharts": "^9.0.0",
     "highcharts-react-official": "^2.2.2",
     "lodash.range": "^3.2.0",
     "react": "^16.10.2",
